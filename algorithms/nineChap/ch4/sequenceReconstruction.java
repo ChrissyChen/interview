@@ -17,8 +17,11 @@ public class Solution {
         int n = org.length;
         int count = 0;
         for (int[] seq : seqs) {  //for 每个小array
+            if (seq.length == 0) {  //跟答案不同的地方
+                continue;
+            }
             count += seq.length;
-            if (seq.length >= 1 && (seq[0] <= 0 || seq[0] > n))  //判断小array里的每个元素是否在[1，n]
+            if (seq[0] <= 0 || seq[0] > n)  //判断小array里的每个元素是否在[1，n]
                 return false;                                //之间，因为org的每个元素是在[1，n]的，是1到n的排列
             for (int i = 1; i < seq.length; i++) { 
                 if (seq[i] <= 0 || seq[i] > n) //判断小array里的每个元素是否在[1，n]之间
